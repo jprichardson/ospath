@@ -30,6 +30,8 @@
   },
   "homepage": "https://github.com/jprichardson/ospath#readme",
   "devDependencies": {
-    "lodash.clonedeep": "^3.0.1"
+    "lodash.clonedeep": "^3.0.1",
+    "mocha": "2.x",
+    "standard": "4.x"
   }
 }
