@@ -1,6 +1,6 @@
 {
   "name": "ospath",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Operating system specific paths.",
   "main": "index.js",
   "scripts": {
@@ -35,6 +35,6 @@
     "standard": "4.x"
   },
   "files": [
-    "./index.js"
+    "index.js"
   ]
 }

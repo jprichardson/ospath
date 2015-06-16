@@ -1,3 +1,7 @@
+1.0.2 / 2015-06-16
+------------------
+- fixed bad `files` field in `package.json`
+
 1.0.1 / 2015-06-16
 ------------------
 - only include specific files
