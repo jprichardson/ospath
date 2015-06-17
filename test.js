@@ -1,5 +1,6 @@
 var assert = require('assert')
 var cloneDeep = require('lodash.clonedeep')
+var proxyquire = require('proxyquire')
 var ospath = require('./')
 
 /* global describe it afterEach beforeEach */
@@ -75,6 +76,13 @@ describe('ospath', function () {
         // windows specific
         process.env.USERPROFILE = '/some/win32/home'
         assert.equal(ospath.home(), '/some/win32/home')
+      })
+    })
+
+    describe('> when os.homedir()', function () {
+      it('should return results of os.homedir()', function () {
+        ospath = proxyquire('./', {os: {homedir: function () { return '/somedir'}}})
+        assert.equal(ospath.home(), '/somedir')
       })
     })
   })

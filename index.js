@@ -1,4 +1,5 @@
 var path = require('path')
+var os = require('os')
 
 function data () {
   switch (this.__platform || process.platform) {
@@ -11,6 +12,9 @@ function data () {
 }
 
 function home () {
+  // io.js >= 2.3
+  if ('homedir' in os) return os.homedir()
+
   switch (this.__platform || process.platform) {
     case 'win32': return path.resolve(process.env.USERPROFILE)
     default: return path.resolve(process.env.HOME)
