@@ -4,7 +4,9 @@
   "description": "Operating system specific paths.",
   "main": "index.js",
   "scripts": {
-    "test": "standard && mocha ./ospath.test.js"
+    "lint": "standard",
+    "test": "npm run lint && npm run unit",
+    "unit": "mocha ./ospath.test.js"
   },
   "repository": {
     "type": "git",
