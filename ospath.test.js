@@ -4,6 +4,7 @@ var proxyquire = require('proxyquire')
 var ospath = require('./')
 
 /* global describe it afterEach beforeEach */
+// trinity: mocha
 
 describe('ospath', function () {
   var env
@@ -81,7 +82,7 @@ describe('ospath', function () {
 
     describe('> when os.homedir()', function () {
       it('should return results of os.homedir()', function () {
-        ospath = proxyquire('./', {os: {homedir: function () { return '/somedir'}}})
+        ospath = proxyquire('./', {os: {homedir: function () { return '/somedir' }}})
         assert.equal(ospath.home(), '/somedir')
       })
     })
