@@ -39,7 +39,11 @@ describe('ospath', function () {
     describe('> when darwin', function () {
       it('should return a string value', function () {
         ospath.__platform = 'darwin'
+        // set HOME var
         process.env.HOME = '/some/darwin/home'
+        // set os.homedir()
+        var stub = {os: {homedir: function () { return '/some/darwin/home' }}}
+        ospath = proxyquire('./', stub)
         assert.equal(ospath.data(), '/some/darwin/home/Library/Application Support')
       })
     })
@@ -57,32 +61,42 @@ describe('ospath', function () {
   describe('home', function () {
     describe('> when linux', function () {
       it('should return a string value', function () {
-        ospath.__platform = 'linux'
+        // set $HOME
         process.env.HOME = '/some/linux/home'
+        // set os.homedir()
+        var stub = {os: {homedir: function () { return '/some/linux/home' }}}
+        ospath = proxyquire('./', stub)
+        ospath.__platform = 'linux'
         assert.equal(ospath.home(), '/some/linux/home')
       })
     })
 
     describe('> when darwin', function () {
       it('should return a string value', function () {
-        ospath.__platform = 'darwin'
         process.env.HOME = '/some/darwin/home'
+        var stub = {os: {homedir: function () { return process.env.HOME }}}
+        ospath = proxyquire('./', stub)
+        ospath.__platform = 'darwin'
         assert.equal(ospath.home(), '/some/darwin/home')
       })
     })
 
     describe('> when win32', function () {
       it('should return a string value', function () {
+        process.env.USERPROFILE = '/some/win32/home'
+        var stub = {os: {homedir: function () { return process.env.USERPROFILE }}}
+        ospath = proxyquire('./', stub)
+
         ospath.__platform = 'win32'
         // windows specific
-        process.env.USERPROFILE = '/some/win32/home'
         assert.equal(ospath.home(), '/some/win32/home')
       })
     })
 
     describe('> when os.homedir()', function () {
       it('should return results of os.homedir()', function () {
-        ospath = proxyquire('./', {os: {homedir: function () { return '/somedir' }}})
+        var stub = {os: {homedir: function () { return '/somedir' }}}
+        ospath = proxyquire('./', stub)
         assert.equal(ospath.home(), '/somedir')
       })
     })
