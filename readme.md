@@ -1,8 +1,10 @@
 ospath
 ======
 
-A JavaScript component that provides operating specific path values. Also
-a replacement for https://github.com/jprichardson/node-path-extra.
+[![npm Package](https://img.shields.io/npm/v/fs-extra.svg?style=flat-square)](https://www.npmjs.org/package/fs-extra)
+[![build status](https://api.travis-ci.org/jprichardson/node-fs-extra.svg)](http://travis-ci.org/jprichardson/node-fs-extra)
+
+A JavaScript component that provides operating specific path values.
 
 
 Installation
@@ -43,5 +45,3 @@ License
 -------
 
 MIT
-
-
