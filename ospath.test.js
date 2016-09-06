@@ -17,7 +17,7 @@ describe('ospath', function () {
     process.env = env
   })
 
-  describe('data', function () {
+  describe('data()', function () {
     describe('> when linux', function () {
       it('should return a string value', function () {
         ospath.__platform = 'linux'
@@ -58,7 +58,43 @@ describe('ospath', function () {
     })
   })
 
-  describe('home', function () {
+  describe('desktop()', function () {
+    describe('> when linux', function () {
+      it('should return a string value', function () {
+        // set $HOME
+        process.env.HOME = '/some/linux/home'
+        // set os.homedir()
+        var stub = {os: {homedir: function () { return process.env.HOME }}}
+        ospath = proxyquire('./', stub)
+        ospath.__platform = 'linux'
+        assert.equal(ospath.desktop(), '/some/linux/home/Desktop')
+      })
+    })
+
+    describe('> when darwin', function () {
+      it('should return a string value', function () {
+        process.env.HOME = '/some/darwin/home'
+        var stub = {os: {homedir: function () { return process.env.HOME }}}
+        ospath = proxyquire('./', stub)
+        ospath.__platform = 'darwin'
+        assert.equal(ospath.desktop(), '/some/darwin/home/Desktop')
+      })
+    })
+
+    describe('> when win32', function () {
+      it('should return a string value', function () {
+        process.env.USERPROFILE = '/some/win32/home'
+        var stub = {os: {homedir: function () { return process.env.USERPROFILE }}}
+        ospath = proxyquire('./', stub)
+
+        ospath.__platform = 'win32'
+        // windows specific
+        assert.equal(ospath.desktop(), '/some/win32/home/Desktop')
+      })
+    })
+  })
+
+  describe('home()', function () {
     describe('> when linux', function () {
       it('should return a string value', function () {
         // set $HOME
@@ -102,7 +138,7 @@ describe('ospath', function () {
     })
   })
 
-  describe('tmp', function () {
+  describe('tmp()', function () {
     describe('> when linux', function () {
       it('should return a string value', function () {
         ospath.__platform = 'linux'

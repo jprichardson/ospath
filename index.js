@@ -11,6 +11,10 @@ function data () {
   }
 }
 
+function desktop () {
+  return path.join(home.call(this), 'Desktop')
+}
+
 function home () {
   // io.js >= 2.3
   if ('homedir' in os) return os.homedir()
@@ -31,6 +35,7 @@ function tmp () {
 var ospath = {
   __platform: process.platform,
   data: data,
+  desktop: desktop,
   home: home,
   tmp: tmp
 }

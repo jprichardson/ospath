@@ -25,6 +25,12 @@ Returns the directory where an application should store its data directory.
 - **Unix-like**: `$XDG_CONFIG_HOME` or `~/.config`
 
 
+### ospath.desktop()
+
+Returns the users desktop directory. On every OS, this is just the `home()`
+dir and `Desktop`.
+
+
 ### ospath.home()
 
 Returns the user's home directory.
