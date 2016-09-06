@@ -1,8 +1,8 @@
 ospath
 ======
 
-[![npm Package](https://img.shields.io/npm/v/fs-extra.svg?style=flat-square)](https://www.npmjs.org/package/fs-extra)
-[![build status](https://api.travis-ci.org/jprichardson/node-fs-extra.svg)](http://travis-ci.org/jprichardson/node-fs-extra)
+[![npm Package](https://img.shields.io/npm/v/ospath.svg?style=flat-square)](https://www.npmjs.org/package/ospath)
+[![build status](https://api.travis-ci.org/jprichardson/ospath.svg)](http://travis-ci.org/jprichardson/ospath)
 
 A JavaScript component that provides operating specific path values.
 
