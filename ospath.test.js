@@ -38,12 +38,12 @@ describe('ospath', function () {
 
     describe('> when darwin', function () {
       it('should return a string value', function () {
-        ospath.__platform = 'darwin'
         // set HOME var
         process.env.HOME = '/some/darwin/home'
         // set os.homedir()
         var stub = {os: {homedir: function () { return '/some/darwin/home' }}}
         ospath = proxyquire('./', stub)
+        ospath.__platform = 'darwin'
         assert.equal(ospath.data(), '/some/darwin/home/Library/Application Support')
       })
     })
